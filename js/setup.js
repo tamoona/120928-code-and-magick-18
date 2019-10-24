@@ -10,19 +10,15 @@ var getRandomValueFromArray = function (array) {
   return array[Math.floor(Math.random() * array.length)];
 };
 
-var createWizard = function (names, surnames, coatColors, eyesColors) {
-  return {
-    name: getRandomValueFromArray(names) + ' ' + getRandomValueFromArray(surnames),
-    coatColor: getRandomValueFromArray(coatColors),
-    eyesColor: getRandomValueFromArray(eyesColors)
-  };
-};
+var createWizards = function (count) {
+  var wizards = [];
 
-var createWizards = function (names, surnames, coatColors, eyesColors, size) {
-  var wizards = Array(size);
-
-  for (var i = 0; i < wizards.length; i++) {
-    wizards[i] = createWizard(names, surnames, coatColors, eyesColors);
+  for (var i = 0; i < count; i++) {
+    wizards.push({
+      name: getRandomValueFromArray(WIZARD_NAMES) + ' ' + getRandomValueFromArray(WIZARD_SURNAMES),
+      coatColor: getRandomValueFromArray(WIZARD_COATS),
+      eyesColor: getRandomValueFromArray(WIZARD_EYES)
+    });
   }
 
   return wizards;
@@ -57,7 +53,7 @@ var openUserDialog = function () {
   userDialog.querySelector('.setup-similar').classList.remove('hidden');
 };
 
-var randomWizards = createWizards(WIZARD_NAMES, WIZARD_SURNAMES, WIZARD_COATS, WIZARD_EYES, WIZARD_NUMBER);
+var randomWizards = createWizards(WIZARD_NUMBER);
 
 renderWizards(randomWizards);
 openUserDialog();
