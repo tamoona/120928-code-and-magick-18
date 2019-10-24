@@ -1,14 +1,20 @@
 'use strict';
 
-var getRandomArrayEl = function (array) {
+var WIZARD_COATS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
+var WIZARD_NAMES = ['Иван', 'Хуан', 'Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
+var WIZARD_SURNAMES = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
+var WIZARD_EYES = ['black', 'red', 'blue', 'yellow', 'green'];
+var WIZARD_NUMBER = 4;
+
+var getRandomValueFromArray = function (array) {
   return array[Math.floor(Math.random() * array.length)];
 };
 
 var createWizard = function (names, surnames, coatColors, eyesColors) {
   return {
-    name: getRandomArrayEl(names) + ' ' + getRandomArrayEl(surnames),
-    coatColor: getRandomArrayEl(coatColors),
-    eyesColor: getRandomArrayEl(eyesColors)
+    name: getRandomValueFromArray(names) + ' ' + getRandomValueFromArray(surnames),
+    coatColor: getRandomValueFromArray(coatColors),
+    eyesColor: getRandomValueFromArray(eyesColors)
   };
 };
 
@@ -51,12 +57,7 @@ var openUserDialog = function () {
   userDialog.querySelector('.setup-similar').classList.remove('hidden');
 };
 
-var WIZARD_COATS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
-var WIZARD_NAMES = ['Иван', 'Хуан', 'Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
-var WIZARD_SURNAMES = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
-var WIZARD_EYES = ['black', 'red', 'blue', 'yellow', 'green'];
-
-var randomWizards = createWizards(WIZARD_NAMES, WIZARD_SURNAMES, WIZARD_COATS, WIZARD_EYES, 4);
+var randomWizards = createWizards(WIZARD_NAMES, WIZARD_SURNAMES, WIZARD_COATS, WIZARD_EYES, WIZARD_NUMBER);
 
 renderWizards(randomWizards);
 openUserDialog();
